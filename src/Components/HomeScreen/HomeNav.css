@@ -1,0 +1,255 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.global__container {
+	position: fixed;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+	height: 75px;
+	background-color: white;
+	display: flex;
+}
+.parent_container {
+	width: 1350px;
+	display: flex;
+	align-items: center;
+
+	padding-left: 98px;
+	border-right: rgb(238, 222, 222) 1px solid;
+}
+.logo-input {
+	display: flex;
+	align-items: center;
+	margin-left: 53px;
+}
+.logo-input > img {
+	height: 45px;
+	width: 45px;
+}
+
+.input__proper {
+	margin-left: -6px;
+	display: flex;
+	align-items: center;
+	padding-left: 15px;
+}
+
+.input__proper > input {
+	width: 350px;
+	height: 45px;
+	border: none;
+	outline: none;
+	margin-left: 0px;
+	background-color: #eef3f8;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
+.input__proper > h2 {
+	width: 60px;
+	height: 45px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #eef3f8;
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+.input__proper > ::placeholder {
+	font-size: 23px;
+	font-weight: 10;
+	color: lightgray;
+	vertical-align: center;
+}
+
+.icons {
+	display: flex;
+	width: 53%;
+	justify-content: space-evenly;
+}
+
+.flex2 {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.home :first-child {
+	font-size: 30px;
+	/* color: gray; */
+	cursor: pointer;
+}
+
+.home > h5 {
+	font-size: 15px;
+	margin-top: 5px;
+	font-weight: 400;
+}
+
+.network :first-child {
+	margin-left: 19px;
+	font-size: 30px;
+	/* color: gray; */
+	cursor: pointer;
+}
+
+.network > h5 {
+	font-size: 15px;
+	margin-top: 5px;
+	font-weight: 400;
+}
+
+.jobs :first-child {
+	font-size: 30px;
+	/* color: gray; */
+	cursor: pointer;
+}
+
+.jobs > h5 {
+	font-size: 15px;
+	margin-top: 5px;
+	font-weight: 400;
+}
+
+.messaging :first-child {
+	margin-left: 16px;
+	font-size: 30px;
+	/* color: gray; */
+	cursor: pointer;
+}
+
+.messaging > h5 {
+	font-size: 15px;
+	margin-top: 5px;
+	font-weight: 400;
+}
+
+.notifications :first-child {
+	margin-left: 24px;
+	font-size: 30px;
+	/* color: gray; */
+	cursor: pointer;
+}
+
+.notifications > h5 {
+	font-size: 15px;
+	margin-top: 5px;
+	font-weight: 400;
+}
+
+.me :first-child {
+	font-size: 30px;
+	/* color: gray; */
+	cursor: pointer;
+}
+
+.me > h5 {
+	font-size: 15px;
+	margin-top: 2px;
+	font-weight: 400;
+}
+
+.home,
+.network,
+.jobs,
+.messaging,
+.notifications,
+.me {
+	position: relative;
+}
+
+.home .active {
+	width: 79.18px;
+	height: 3px;
+	background-color: black;
+	position: absolute;
+	bottom: -10px;
+	left: -20px;
+}
+
+.network > .active {
+	width: 100%;
+
+	height: 3px;
+	background-color: black;
+	position: absolute;
+	bottom: -10px;
+}
+
+.jobs > .active {
+	width: 79.18px;
+	height: 3px;
+	background-color: black;
+	position: absolute;
+	bottom: -10px;
+	left: -20px;
+}
+
+.messaging > .active {
+	width: 100%;
+	height: 3px;
+	background-color: black;
+	position: absolute;
+	bottom: -10px;
+}
+
+.notifications > .active {
+	width: 100%;
+	height: 3px;
+	background-color: black;
+	position: absolute;
+	bottom: -10px;
+}
+
+.me > .active {
+	width: 79.18px;
+	height: 3px;
+	background-color: black;
+	position: absolute;
+	bottom: -10px;
+	margin-left: -20px;
+}
+.me > h5 {
+	margin-left: 7px;
+}
+.profile__avatar {
+	width: 32px;
+	height: 30px;
+	background-color: lightgrey;
+	border-radius: 50px;
+}
+
+.live {
+	color: black;
+}
+
+.passive {
+	color: gray;
+}
+
+.flex1 {
+	margin-left: 20px;
+	width: 20%;
+	display: flex;
+	align-items: center;
+}
+
+.work:nth-child(1) {
+	font-size: 30px;
+	cursor: pointer;
+	margin-top: -3px;
+
+	color: gray;
+}
+
+.work > h5 {
+	font-size: 15px;
+
+	font-weight: 400;
+}

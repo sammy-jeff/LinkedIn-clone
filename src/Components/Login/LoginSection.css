@@ -1,0 +1,79 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.LoginSection__cont {
+	display: flex;
+	justify-content: center;
+}
+.hero-section {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+	max-width: 2000px;
+	width: 1450px;
+	height: calc(100vh - 80px);
+}
+
+.section-style {
+	position: relative;
+
+	padding: 55px 22.5px;
+	height: 500.38px;
+	width: 800.39px;
+}
+
+.section-style > h1 {
+	line-height: 90px;
+	font-size: 65px;
+	color: #8f5849;
+	font-weight: 500;
+}
+
+.section-style2 {
+	position: absolute;
+	top: 80%;
+	left: 20%;
+	display: flex;
+	border: solid black 2px;
+	border-radius: 30px;
+	width: 350px;
+	height: 70px;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	cursor: pointer;
+	box-shadow: 3px 7px lightgray;
+	transition-duration: 169ms;
+	font-size: 20px;
+}
+.section-style2:hover {
+	background-color: rgba(207, 207, 207, 0.25);
+	box-shadow: 3px 7px whitesmoke;
+}
+
+.section-style2 > img {
+	height: 45px;
+	width: 28px;
+}
+.section-style2 a {
+	text-decoration: none;
+	color: #00000099;
+}
+.section-style2 > h3 {
+	margin-top: 9px;
+	margin-left: 8px;
+	font-size: 24px;
+	font-weight: 400;
+	color: gray;
+}
+
+.hero-section > img {
+	width: 750px;
+	height: 650px;
+	margin-top: 55px;
+	margin-right: -60px;
+	border-radius: 40%;
+}

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './SignUpScreen.css'
 function SignUpScreen() {
@@ -8,7 +8,6 @@ function SignUpScreen() {
 	let [regex__reg, setRegex__reg] = useState(false)
 	let regex_email = /^([a-z0-9\.-]+)@([a-z|\d]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
 	let regex__phone = /^[\d]{10}$/
-	const ok = 123
 
 	const activate__regex = (text) => {
 		setText__reg(text)

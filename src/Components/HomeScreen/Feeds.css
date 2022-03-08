@@ -7,8 +7,8 @@
 .Feeds {
 	position: absolute;
 	height: 100vh;
-	width: 100%;
-	flex: 2;
+	width: 40%;
+	/* flex: 2; */
 }
 
 .add__post {

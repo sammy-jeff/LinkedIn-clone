@@ -229,6 +229,121 @@ function Feeds() {
 					)}
 				</div>
 			</section>
+			<section className='posts'>
+				<div className='posts__container'>
+					<div className='mutualFriend__likes'>
+						<h3 style={{ fontSize: 20, fontWeight: 400, color: '#000000e6' }}>
+							Someone{' '}
+							<span style={{ fontSize: 15, fontWeight: 500, color: '#00000099' }}>liked this</span>
+						</h3>
+						<FontAwesomeIcon icon={faEllipsisH} style={{ fontWeight: 400, color: '#000000e6' }} />
+					</div>
+					<div className='user__info'>
+						<div className='portions'>
+							<div className='img__container'></div>
+							<div className='info'>
+								<h4>LinkedIn</h4>
+								<h5>{truncate('Company . Internet', 75)}</h5>
+							</div>
+						</div>
+					</div>
+					<div className='post__text'>
+						<h3>
+							{truncateText(
+								'Find out if the new + 0008 is the right certification for you and your team, during a fully sponsored half-day online skills camp, designed to equip your team with the technical skill required in the real world and an on demand skill wdowdujo rwolwrlwewl weieowieoweoo weioeiwoo wowoworiowrf worowrwo oierwewwowo woeiwoewioei woeiwoeiow woioewoeo wioweoweiw',
+								100
+							)}
+						</h3>
+					</div>
+					<div className='post__image'>
+						<img src='login-hero.svg' alt='' />
+						<img src='logo512.png' alt='' />
+						<img
+							src='https://www.creativecircle.com/wp-content/uploads/2020/04/working-remote.png'
+							alt=''
+						/>
+					</div>
+					<div className='post__reactions'>
+						<div className='reaction-col'>
+							<h3>
+								<FontAwesomeIcon
+									className='reactions'
+									style={{
+										background: 'rgb(12, 69, 255)',
+										borderRadius: 50,
+										color: ' rgb(252, 249, 249)',
+										padding: 4,
+									}}
+									icon={faThumbsUp}
+								/>
+								<FontAwesomeIcon
+									className='reactions'
+									style={{
+										background: 'rgba(214, 23, 23, 0.932)',
+										borderRadius: 50,
+										color: ' rgb(252, 249, 249)',
+										padding: 4,
+									}}
+									icon={faHeart}
+								/>
+								<FontAwesomeIcon
+									className='reactions'
+									style={{ color: 'rgb(211, 164, 47)' }}
+									icon={faSurprise}
+								/>{' '}
+							</h3>
+							<h4>142</h4>
+						</div>
+						<div className='comment__indicator'>
+							<h4 onClick={() => setisComment(true)}>9 comments</h4>
+						</div>
+					</div>
+					<div className='post__actions'>
+						<div className='pad__it'>
+							<h2>
+								<FontAwesomeIcon icon={faThumbsUp} /> <span>Like</span>
+							</h2>
+						</div>
+						<div className='pad__it'>
+							<h2>
+								<FontAwesomeIcon icon={faCommentAlt} /> <span>Comment</span>
+							</h2>
+						</div>
+						<div className='pad__it'>
+							<h2>
+								<FontAwesomeIcon icon={faShare} /> <span>Share</span>
+							</h2>
+						</div>
+						<div className='pad__it'>
+							<h2>
+								<FontAwesomeIcon icon={faPaperPlane} /> <span>Send</span>
+							</h2>
+						</div>
+					</div>
+					{isComment && (
+						<div className='comments'>
+							<div className='add__comment__container'>
+								<div className='img__container'></div>
+								<div className='comment__create__container'>
+									<textarea
+										className='add__comment'
+										ref={textRef}
+										placeholder='Add a comment'
+										onChange={handleBtn}
+										style={{ height: isType ? height.mainHeight : `${55}px` }}
+									/>
+
+									<div className='comment__emoji__pics'>
+										<FontAwesomeIcon icon={faSmile} />
+										<FontAwesomeIcon icon={faImage} />
+									</div>
+								</div>
+							</div>
+							{btn.length > 2 && <button className='post__comment'>Post</button>}
+						</div>
+					)}
+				</div>
+			</section>
 		</div>
 	)
 }

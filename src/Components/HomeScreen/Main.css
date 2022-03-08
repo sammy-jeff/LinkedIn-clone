@@ -5,10 +5,11 @@
 }
 
 .container {
-	position: absolute;
-	top: 120px;
-	left: 145px;
+	margin-top: 125px;
 	display: flex;
-	justify-content: space-around;
+	/* justify-content: space-around; */
+	justify-content: space-evenly;
+	width: 100%;
 	min-height: 100vh;
+	border: 2px solid red;
 }

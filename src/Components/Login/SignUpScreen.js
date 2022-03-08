@@ -1,29 +1,43 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './SignUpScreen.css'
 function SignUpScreen() {
 	const [revealPass__reg, setRevealPass__reg] = useState(false)
 	let navigate = useNavigate()
 	let [text__reg, setText__reg] = useState('')
+	let [password__reg, setPassword__reg] = useState('')
 	let [regex__reg, setRegex__reg] = useState(false)
-	let regex_email = /^([a-z0-9\.-]+)@([a-z|\d]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
-	let regex__phone = /^[\d]{10}$/
+	let [regex__reg__password, setRegex__reg__password] = useState(false)
+	let regex_email = /^([a-z0-9\.-]+)@([a-z|\d]+)\.([a-z]{3,8})(\.[a-z]{2,8})?$|(^[\d]{11,11}$)/
+	let regex__password = /^\w{8,12}$/
 
-	const activate__regex = (text) => {
-		setText__reg(text)
+	const activate__regex__text = (e) => {
+		e.preventDefault()
+		setText__reg(e.target.value)
+	}
+	const activate__regex__password = (e) => {
+		e.preventDefault()
+		setPassword__reg(e.target.value)
+	}
+	useEffect(() => {
 		if (text__reg !== '') {
-			if (!regex_email.test(text__reg) && !regex__phone.test(text__reg)) {
+			if (!regex_email.test(text__reg)) {
 				setRegex__reg(true)
 			} else {
 				setRegex__reg(false)
 			}
-		} else {
-			return
 		}
-		// console.log(text__reg.length - 1)
-		// console.log(regex_email.test(text__reg))
-	}
-
+	}, [text__reg])
+	useEffect(() => {
+		if (password__reg !== '') {
+			if (!regex__password.test(password__reg)) {
+				setRegex__reg__password(true)
+			} else {
+				setRegex__reg__password(false)
+			}
+		}
+	}, [password__reg])
+	console.log(password__reg)
 	return (
 		<div className='signUpScreen'>
 			<div className='header__signUp'>
@@ -46,31 +60,40 @@ function SignUpScreen() {
 								regex__reg && text__reg !== '' ? `email__phone__reg__invalid` : 'email__phone__reg'
 							}>
 							<label htmlFor='email__reg'>Email or Phone number</label>
-							<input
-								type='text'
-								id='email__reg'
-								value={text__reg}
-								onChange={(e) => activate__regex(e.target.value)}
-							/>
+							<input type='text' id='email__reg' value={text__reg} onChange={activate__regex__text} />
 							{/* for regex purposes start */}
 
-							{text__reg === '' && <p>Please enter your email address or mobile number</p>}
-							{regex__reg && text__reg != '' ? (
-								<p>Please enter a valid email address or phone number</p>
+							{regex__reg && text__reg !== '' ? (
+								<p className='validate__text'>Please enter a valid email address or phone number</p>
 							) : (
 								''
 							)}
 							{/* for regex purposes end */}
 						</div>
-						<div className='password__reg'>
-							<label htmlFor='pass__reg'>Password (6 or more characters)</label>
-							<input type={revealPass__reg ? 'text' : 'password'} id='pass__reg' />
+						<div
+							className={
+								regex__reg__password && password__reg !== ''
+									? `password__reg__invalid`
+									: `password__reg`
+							}>
+							<label htmlFor='pass__reg'>Password (8-12 characters)</label>
+							<input
+								type={revealPass__reg ? 'text' : 'password'}
+								id='pass__reg'
+								value={password__reg}
+								onChange={activate__regex__password}
+							/>
 							<h3 className='password__reveal__reg' onClick={() => setRevealPass__reg(!revealPass__reg)}>
 								{revealPass__reg ? 'hide' : 'show'}
 							</h3>
-							{/* for regex purposes start */}
-							{/* for regex purposes end */}
 						</div>
+						{/* for regex purposes start */}
+						{regex__reg__password && password__reg !== '' ? (
+							<p className='validate__password'>password must have 8-12 characters</p>
+						) : (
+							''
+						)}
+						{/* for regex purposes end */}
 						<div className='service__policy'>
 							<p>
 								By clicking Agree & Join, you agree to the LinkedIn{' '}

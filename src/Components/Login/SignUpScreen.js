@@ -11,12 +11,10 @@ function SignUpScreen() {
 	let regex_email = /^([a-z0-9\.-]+)@([a-z|\d]+)\.([a-z]{3,8})(\.[a-z]{2,8})?$|(^[\d]{11,11}$)/
 	let regex__password = /^\w{8,12}$/
 
-	const activate__regex__text = (e) => {
-		e.preventDefault()
-		setText__reg(e.target.value)
+	const activate__regex__text = (event) => {
+		setText__reg(event.target.value)
 	}
 	const activate__regex__password = (e) => {
-		e.preventDefault()
 		setPassword__reg(e.target.value)
 	}
 	useEffect(() => {

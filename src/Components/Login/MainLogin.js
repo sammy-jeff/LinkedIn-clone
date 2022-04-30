@@ -1,17 +1,12 @@
-import React, { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Login from './Login'
-import SignInScreen from './SignInScreen'
-import SignUpScreen from './SignUpScreen'
-
+import React from 'react'
+import Nav from './mainLoginFol/Nav'
+import styles from '../../CSS/loginCss/mainlogin.module.css'
+import CallToAction from './mainLoginFol/CallToAction'
 function MainLogin() {
 	return (
-		<div>
-			<Routes>
-				<Route path='/' element={<Login />} />
-				<Route path='/signIn' element={<SignInScreen />} />
-				<Route path='/signUp' element={<SignUpScreen />} />
-			</Routes>
+		<div className={styles.mainLogin}>
+			<Nav />
+			<CallToAction />
 		</div>
 	)
 }

@@ -1,22 +1,20 @@
 import './App.css'
-import Home from './Components/HomeScreen/Home'
-import Login from './Components/Login/Login'
+import Home from './Components/loggedIn/Home'
+
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
-import postReducer from './features/createPostSlice'
-import MainLogin from './Components/Login/MainLogin'
+
+import Main from './Components/login/Main'
 
 const store = configureStore({
-	reducer: {
-		post: postReducer,
-	},
+	reducer: {},
 })
 function App() {
 	let user = false
 	return (
 		<div className='App'>
 			{' '}
-			<Provider store={store}>{user ? <Home /> : <MainLogin />}</Provider>
+			<Provider store={store}>{user ? <Home /> : <Main />}</Provider>
 		</div>
 	)
 }

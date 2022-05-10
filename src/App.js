@@ -10,7 +10,7 @@ const store = configureStore({
 	reducer: {},
 })
 function App() {
-	let user = false
+	let user = true
 	return (
 		<div className='App'>
 			{' '}

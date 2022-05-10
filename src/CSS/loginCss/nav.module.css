@@ -15,7 +15,6 @@
 }
 .topLinks {
 	display: flex;
-
 	justify-content: space-evenly;
 }
 
@@ -39,7 +38,9 @@
 	font-size: 1.1rem;
 	color: #00000099;
 }
-
+.topLinks a:hover {
+	color: #000000;
+}
 .bottomLinks a {
 	text-decoration: none;
 	font-size: 1.1rem;
@@ -63,7 +64,6 @@
 	color: #0a66c2;
 	border-radius: 24px;
 	text-align: center;
-
 	box-sizing: border-box;
 }
 

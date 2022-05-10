@@ -1,25 +1,33 @@
-.action {
-	padding: 2rem 1rem;
+* {
+	padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+}
+.signInScreen {
 	width: 100%;
-	display: flex;
-	flex-direction: column;
+}
+.header__img {
+	padding: 1.4rem 3.3rem;
 }
 
-.action h1 {
-	font-size: 2.1rem;
-	max-width: 30rem;
+.header__img h1 {
 	font-weight: 100;
-	color: #8f5849;
+}
+.header__img p {
+	color: #00000099;
 }
 .form {
-	padding: 2rem 0rem;
+	width: 70%;
 	display: flex;
 	flex-direction: column;
-	gap: 14px;
+	justify-content: center;
+	gap: 20px;
+	margin: 0 auto;
 }
 
 .forEmail,
 .forPassword {
+	width: 100%;
 	height: 50px;
 	display: flex;
 	flex-direction: column;
@@ -43,7 +51,6 @@
 	transform: translate(0, 15px) scale(1);
 	margin-left: 10px;
 	transform-origin: top left;
-
 	transition: all 0.2s ease-in-out;
 	font-size: 1.1rem;
 	font-weight: 100;
@@ -88,9 +95,9 @@
 .forPassword span {
 	position: absolute;
 	top: 20%;
-	left: 84%;
-	color: #00000099;
-	font-size: 1.1rem;
+	left: 80%;
+	color: #0a66c4;
+	font-size: 1rem;
 	padding: 5px 10px;
 	border-radius: 3px;
 	transition: all ease-in-out 200ms;
@@ -125,7 +132,7 @@
 }
 
 #signInBtn {
-	padding: 1.2rem 0rem;
+	padding: 1rem 0rem;
 	background-color: #0073b1;
 	color: #fff;
 	border: none;
@@ -164,7 +171,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0.7rem 0rem;
+	padding: 0.5rem 0rem;
 	border-radius: 30px;
 	background-color: #fff;
 	border: 0.5px solid #00000099;
@@ -175,40 +182,49 @@
 	height: 25px;
 }
 .googleSignIn p {
-	font-size: 1.1rem;
+	font-size: 1rem;
 	font-weight: 100;
 	color: #00000099;
 	margin-left: 12px;
 }
-
 .googleSignIn:hover {
-	background-color: rgb(243, 243, 243);
-	border: #000000 solid 2px;
-	margin: -1px;
+	background-color: rgb(216, 213, 213);
 }
-.imgContainer {
+
+.register {
 	display: flex;
 	justify-content: center;
-}
-.hero {
-	width: 60%;
+	gap: 5px;
+	padding: 1.5rem 0;
+	font-size: 1.05rem;
 }
 
+.register a {
+	text-decoration: none;
+	color: #0c61b6;
+}
+
+.foot {
+	display: none;
+}
+
+/* Media Queries */
+
 @media screen and (min-width: 45em) {
-	.action {
-		flex-direction: row;
-		padding: 0rem 7.3rem;
-		gap: 5rem;
+	.foot {
+		display: block;
 	}
-	.action h1 {
-		font-size: 2.8rem;
-		max-width: 39rem;
-		line-height: 4rem;
-	}
-	.hero {
-		width: 100%;
+	.section {
+		box-sizing: border-box;
+		height: calc(100vh - 5rem);
 	}
 	.form {
-		gap: 1.7rem;
+		max-height: 90%;
+		padding: 1rem 1rem;
+		width: 25%;
+		gap: 16px;
+		background: #fff;
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
 	}
 }

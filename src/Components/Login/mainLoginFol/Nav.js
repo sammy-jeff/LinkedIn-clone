@@ -1,12 +1,13 @@
 import React from 'react'
 import styles from '../../../CSS/loginCss/nav.module.css'
 import { faBook, faBriefcase, faCompass, faPeopleArrows } from '@fortawesome/free-solid-svg-icons'
-
+import { Link, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 function Nav() {
+	const navigate = useNavigate()
 	return (
 		<nav className={styles.navContainer}>
-			<img src='Linkedin_logo_PNG4.png' className={styles.logo} alt='' />
+			<img src='Linkedin_logo_PNG4.png' className={styles.logo} alt='' onClick={() => navigate('/')} />
 			<ul className={styles.topLinks}>
 				<li>
 					<a href=''>
@@ -34,12 +35,12 @@ function Nav() {
 				</li>
 			</ul>
 			<div className={styles.bottomLinks}>
-				<a href='' className={styles.join}>
-					Join now
-				</a>
-				<a href='' className={styles.signInBtn}>
-					Sign in
-				</a>
+				<Link to='signUp' className={styles.join}>
+					<a href=''>Join now</a>
+				</Link>
+				<Link to='signIn' className={styles.signInBtn}>
+					<a href=''>Sign in</a>
+				</Link>
 			</div>
 		</nav>
 	)

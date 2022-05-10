@@ -2,9 +2,9 @@ body {
 	/* overflow-y: scroll; */
 	overflow-x: hidden;
 }
-html {
+/* html {
 	overflow-x: hidden;
-}
+} */
 
 :root,
 html,

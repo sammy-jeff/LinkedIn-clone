@@ -1,0 +1,40 @@
+.nav {
+	background-color: #fff;
+	padding: 0.5rem 1.3rem;
+	display: flex;
+	align-items: center;
+}
+.header svg {
+	color: #0a66c2;
+}
+.lists {
+	display: flex;
+	flex: 2;
+	justify-content: space-evenly;
+	align-items: center;
+	margin-left: 0.8rem;
+}
+.lists li {
+	list-style: none;
+	font-size: 1.5rem;
+}
+.lists .icon__titles {
+	display: none;
+}
+.icons__container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.me {
+	width: 57%;
+	height: 2rem;
+	border-radius: 50%;
+	background-color: rgb(236, 234, 234);
+}
+
+.me img {
+	width: 100%;
+	height: auto;
+	object-fit: contain;
+}

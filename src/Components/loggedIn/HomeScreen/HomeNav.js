@@ -1,23 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../../../CSS/loggedInCss/homenav.module.css'
 import {
-	faArrowDown,
 	faBell,
-	faBellSlash,
 	faBriefcase,
 	faCaretDown,
-	faCircle,
-	faComment,
-	faCommentAlt,
 	faCommentDots,
 	faEllipsisH,
-	faGlobeAmericas,
+	faExternalLinkSquareAlt,
 	faHome,
+	faHSquare,
 	faPeopleArrows,
-	faPeopleCarry,
+	faPhoneSquareAlt,
+	faRssSquare,
+	faSquareFull,
+	faSquareRootAlt,
+	faVectorSquare,
+	faWaveSquare,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 function HomeNav() {
+	const [showwork, setShowWork] = useState(false)
+	const [showLogOut, setShowLogOut] = useState(false)
 	return (
 		<nav className={styles.nav}>
 			<header className={styles.header}>
@@ -57,7 +60,12 @@ function HomeNav() {
 					<FontAwesomeIcon icon={faBell} />
 					<span className={styles.icon__titles}>Notifications</span>
 				</li>
-				<li className={styles.icons__container}>
+				<li
+					className={styles.icons__container}
+					onClick={() => {
+						setShowLogOut(!showLogOut)
+						setShowWork(false)
+					}}>
 					<div className={styles.me}>
 						<img src='user-avatar-svgrepo-com.svg' alt='' />
 					</div>
@@ -67,10 +75,25 @@ function HomeNav() {
 							<FontAwesomeIcon icon={faCaretDown} />
 						</span>
 					</span>
+					{showLogOut && (
+						<div className={styles.logOut}>
+							<p>Sign Out</p>
+						</div>
+					)}
 				</li>
-				<li className={styles.icons__container}>
+				<li
+					className={styles.icons__container}
+					onClick={() => {
+						setShowWork(!showwork)
+						setShowLogOut(false)
+					}}>
 					<FontAwesomeIcon icon={faEllipsisH} />
-					<span className={styles.icon__titles}>work</span>
+					{showwork && (
+						<div className={styles.work}>
+							<FontAwesomeIcon icon={faSquareFull} />
+							<p>Try Premium for free</p>
+						</div>
+					)}
 				</li>
 			</ul>
 		</nav>

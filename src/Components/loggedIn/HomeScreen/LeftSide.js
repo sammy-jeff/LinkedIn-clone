@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../../../CSS/loggedInCss/leftSide.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark, faChevronDown, faChevronUp, faPlus, faSquare } from '@fortawesome/free-solid-svg-icons'
 function LeftSide() {
 	const [lessMore, setLessMore] = useState(false)
+
+	const [width, setWidth] = useState(window.innerWidth)
+	const breakPoint = 768
+	useEffect(() => {
+		window.addEventListener('resize', () => setWidth(window.innerWidth))
+		return window.removeEventListener('resize', () => setWidth(window.innerWidth))
+	}, [])
+	console.log(width)
 	return (
 		<section className={styles.LeftSide}>
 			<div className={styles.identity__container}>
@@ -17,12 +25,12 @@ function LeftSide() {
 					</div>
 				</div>
 
-				<div className={lessMore ? styles.invisible : styles.grow__network}>
+				<div className={width < breakPoint && lessMore ? styles.invisible : styles.grow__network}>
 					<p>Connection</p>
 					<p>68</p>
 					<p>Grow your network</p>
 				</div>
-				<div className={lessMore ? styles.invisible : styles.exclusives}>
+				<div className={width < breakPoint && lessMore ? styles.invisible : styles.exclusives}>
 					<p>Access exclusive tools & insights</p>
 					<p className={styles.access}>
 						<span>
@@ -31,14 +39,14 @@ function LeftSide() {
 						Try Premium for free
 					</p>
 				</div>
-				<div className={lessMore ? styles.invisible : styles.items}>
+				<div className={width < breakPoint && lessMore ? styles.invisible : styles.items}>
 					<span>
 						<FontAwesomeIcon icon={faBookmark} />
 					</span>
 					<p>My Items</p>
 				</div>
 			</div>
-			<div className={lessMore ? styles.invisible : styles.events}>
+			<div className={width < breakPoint && lessMore ? styles.invisible : styles.events}>
 				<p>Groups</p>
 				<p>
 					Events{' '}
@@ -52,19 +60,21 @@ function LeftSide() {
 				</div>
 			</div>
 
-			<div className={styles.hide} onClick={() => setLessMore(!lessMore)}>
-				{lessMore ? (
-					<>
-						<a>Show More</a>
-						<FontAwesomeIcon icon={faChevronDown} />
-					</>
-				) : (
-					<>
-						<a>Show Less</a>
-						<FontAwesomeIcon icon={faChevronUp} />
-					</>
-				)}
-			</div>
+			{width < breakPoint && (
+				<div className={styles.hide} onClick={() => setLessMore(!lessMore)}>
+					{lessMore ? (
+						<>
+							<a>Show More</a>
+							<FontAwesomeIcon icon={faChevronDown} />
+						</>
+					) : (
+						<>
+							<a>Show Less</a>
+							<FontAwesomeIcon icon={faChevronUp} />
+						</>
+					)}
+				</div>
+			)}
 		</section>
 	)
 }

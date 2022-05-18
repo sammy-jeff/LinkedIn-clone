@@ -2,7 +2,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
-	/* min-height: 557.8px; */
 }
 
 .identity__container {
@@ -143,4 +142,20 @@
 
 .invisible {
 	display: none;
+}
+
+/* Media queries */
+@media screen and (min-width: 48em) {
+	.LeftSide {
+		min-height: 557.8px;
+	}
+	.events {
+		position: sticky;
+		top: 10%;
+	}
+	.profilePic__container {
+		margin-top: -65px;
+		max-width: 17%;
+		max-height: 4.4rem;
+	}
 }

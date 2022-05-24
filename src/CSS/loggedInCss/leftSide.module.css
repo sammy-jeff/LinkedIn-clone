@@ -8,6 +8,7 @@
 	width: 100%;
 	background-color: #fff;
 	position: relative;
+	box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 2px 3px rgb(0 0 0 / 20%);
 }
 .user {
 	display: flex;
@@ -114,6 +115,7 @@
 	font-size: 0.9rem;
 	color: #0a66c2;
 	font-weight: 600;
+	box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 2px 3px rgb(0 0 0 / 20%);
 }
 
 .discover {
@@ -149,13 +151,20 @@
 	.LeftSide {
 		min-height: 557.8px;
 	}
+	.identity__container {
+		border-radius: 8px;
+	}
 	.events {
 		position: sticky;
 		top: 10%;
+		border-radius: 8px;
 	}
 	.profilePic__container {
 		margin-top: -65px;
 		max-width: 17%;
 		max-height: 4.4rem;
+	}
+	.grow__network {
+		grid-template-columns: 5fr 1fr;
 	}
 }

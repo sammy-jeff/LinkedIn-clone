@@ -2,7 +2,7 @@
 	position: absolute;
 	top: 10%;
 	display: grid;
-	min-width: 100vw;
+	max-width: max(100vw, 500px);
 	gap: 15px;
 	/* min-height: calc(100vh - 54px); */
 	background-color: rgb(236, 234, 234);
@@ -13,10 +13,10 @@
 @media screen and (min-width: 48em) {
 	.main {
 		top: 11%;
-		padding: 0 3rem;
+		padding: 0 7rem;
 		grid-template-areas: 'Left Middle Right';
-		grid-template-columns: 1fr 2fr 1fr;
+		grid-template-columns: 1.3fr 3fr 2fr;
 		align-content: center;
-		gap: 15px;
+		gap: 30px;
 	}
 }

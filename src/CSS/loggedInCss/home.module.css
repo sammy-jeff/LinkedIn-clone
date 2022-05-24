@@ -1,5 +1,5 @@
 .home {
-	min-height: 100vh;
+	min-height: max(100vh, 600px);
 	background-color: rgb(236, 234, 234);
 	position: relative;
 }

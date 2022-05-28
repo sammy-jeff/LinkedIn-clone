@@ -15,7 +15,7 @@
 		top: 11%;
 		padding: 0 7rem;
 		grid-template-areas: 'Left Middle Right';
-		grid-template-columns: 1.3fr 3fr 2fr;
+		grid-template-columns: 1.4fr 3fr 2fr;
 		align-content: center;
 		gap: 30px;
 	}

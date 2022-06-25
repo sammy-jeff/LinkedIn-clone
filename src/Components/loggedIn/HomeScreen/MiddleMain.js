@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import styles from '../../../CSS/loggedInCss/middleMain.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faImage, faPaperPlane, faShare, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
@@ -50,7 +50,7 @@ function MiddleMain() {
 			<div className={styles.post__msg}>
 				<p>
 					{truncateText(
-						'sahskaskasjaksjaksjaksajskajksajksajskajsajksjaksjaksjaksajskajskasjkasjkasjkasjkasjkasjakjskajskasjkajskajskajsajskajskajksajskajksajkskajsasasgajsgjasgjagsjgjgjgjgjgjdsdsd; dfdfdffsd rfwdew edsdsd sresedsdld sedsdswdkl; ssd sdsdk;sd k; sds sd k; sd ',
+						'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum doloremque quibusdam magnam unde consectetur libero sunt est fugiat vel explicabo culpa, aut commodi tenetur, suscipit eos expedita id ipsum recusandae Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
 						80
 					)}
 				</p>

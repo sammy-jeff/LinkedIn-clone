@@ -149,6 +149,9 @@
 .invisible {
 	display: none;
 }
+.visible {
+	display: block;
+}
 
 /* Media queries */
 @media screen and (min-width: 48em) {

@@ -12,6 +12,7 @@ function LeftSide() {
 		return window.removeEventListener('resize', () => setWidth(window.innerWidth))
 	}, [])
 	console.log(width)
+	// width < breakPoint && lessMore ? styles.invisible : styles.grow__network
 	return (
 		<section className={styles.LeftSide}>
 			<div className={styles.identity__container}>
@@ -25,25 +26,27 @@ function LeftSide() {
 					</div>
 				</div>
 
-				<div className={width < breakPoint && lessMore ? styles.invisible : styles.grow__network}>
-					<p>Connection</p>
-					<p>68</p>
-					<p>Grow your network</p>
-				</div>
-				<div className={width < breakPoint && lessMore ? styles.invisible : styles.exclusives}>
-					<p>Access exclusive tools & insights</p>
-					<p className={styles.access}>
+				<div className={width < breakPoint && lessMore ? styles.invisible : styles.visible}>
+					<div className={styles.grow__network}>
+						<p>Connection</p>
+						<p>68</p>
+						<p>Grow your network</p>
+					</div>
+					<div className={styles.exclusives}>
+						<p>Access exclusive tools & insights</p>
+						<p className={styles.access}>
+							<span>
+								<FontAwesomeIcon icon={faSquare} />
+							</span>
+							Try Premium for free
+						</p>
+					</div>
+					<div className={styles.items}>
 						<span>
-							<FontAwesomeIcon icon={faSquare} />
+							<FontAwesomeIcon icon={faBookmark} />
 						</span>
-						Try Premium for free
-					</p>
-				</div>
-				<div className={width < breakPoint && lessMore ? styles.invisible : styles.items}>
-					<span>
-						<FontAwesomeIcon icon={faBookmark} />
-					</span>
-					<p>My Items</p>
+						<p>My Items</p>
+					</div>
 				</div>
 			</div>
 			<div className={width < breakPoint && lessMore ? styles.invisible : styles.events}>

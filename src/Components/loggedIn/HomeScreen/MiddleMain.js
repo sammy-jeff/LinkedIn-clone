@@ -1,46 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from '../../../CSS/loggedInCss/middleMain.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-	faAngry,
-	faComment,
-	faHeart,
-	faImage,
-	faLaugh,
-	faPaperPlane,
-	faShare,
-	faSurprise,
-	faThumbsUp,
-} from '@fortawesome/free-solid-svg-icons'
+import { faComment, faImage, faPaperPlane, faShare, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import useEmoji from '../../../customs/useEmojis'
+import useTruncation from '../../../customs/useTruncation'
+
 function MiddleMain() {
-	const [isClicked, setisClicked] = useState(false)
-	const [showReactions, setShowReactions] = useState(false)
+	const [comment, setComment] = useState({ 0: false, 1: false })
+	const [showReactions, setShowReactions] = useState({ 0: false, 1: false, 2: false })
+	const handleComment = (id) => {
+		const val = true
+		setComment({ ...comment, [id]: val })
+	}
+	const rxnVisible = (id) => {
+		setShowReactions({ ...showReactions, [id]: true })
+	}
+	const rxnHidden = (id) => {
+		setShowReactions({ ...showReactions, [id]: false })
+	}
 	const handleKeyDownComments = (e) => {
 		e.target.style.height = 'inherit'
 		e.target.style.height = `${e.target.scrollHeight}px`
 	}
-	const [post__text__comment, setPost__text__comment] = useState('')
-	const truncateText = (string, n) => {
-		if (isClicked) {
-			return string
-		} else {
-			return (
-				<>
-					{string.slice(0, n)}
-					<h5
-						onClick={() => setisClicked(true)}
-						style={{
-							textDecoration: 'underline',
-							cursor: 'pointer',
-							display: 'inline-block',
-							marginLeft: 5,
-						}}>
-						...See more
-					</h5>
-				</>
-			)
-		}
+	const [post__text__comment, setPost__text__comment] = useState({ comment: '', reply: '' })
+	const handleChange = (e) => {
+		const { name, value } = e.target
+		setPost__text__comment({ ...post__text__comment, [name]: value })
 	}
+	const emojis = useEmoji()
+	const truncateText = useTruncation()
 	return (
 		<article className={styles.main__post}>
 			<div className={styles.top}>
@@ -74,11 +62,22 @@ function MiddleMain() {
 			</div>
 			<div className={styles.cta}>
 				<ul className={styles.cta__list}>
-					<li onMouseEnter={() => setShowReactions(true)}>
-						<FontAwesomeIcon icon={faThumbsUp} />
+					<li onMouseLeave={() => rxnHidden(0)}>
+						<FontAwesomeIcon icon={faThumbsUp} onMouseEnter={() => rxnVisible(0)} />
 						<p>Like</p>
+						{showReactions[0] && (
+							<>
+								<div className={styles.reactions}>
+									<ul className={styles.sub__rxn}>
+										{emojis.map((emoji, index) => (
+											<li key={index}>{emoji.emoji__rxn}</li>
+										))}
+									</ul>
+								</div>
+							</>
+						)}
 					</li>
-					<li>
+					<li onClick={() => handleComment(0)}>
 						<FontAwesomeIcon icon={faComment} />
 						<p>Comment</p>
 					</li>
@@ -91,46 +90,143 @@ function MiddleMain() {
 						<p>Send</p>
 					</li>
 				</ul>
-				{showReactions && (
-					<div
-						className={styles.reactions}
-						onMouseEnter={() => setShowReactions(true)}
-						onMouseLeave={() => setShowReactions(false)}>
-						<ul className={styles.sub__rxn}>
-							<li>
-								<FontAwesomeIcon color='#0a66c2' icon={faThumbsUp} />
-							</li>
-							<li>
-								<FontAwesomeIcon color='#f7b125' icon={faLaugh} />
-							</li>
-							<li>
-								<FontAwesomeIcon color='#f33e58' icon={faHeart} />
-							</li>
-							<li>
-								<FontAwesomeIcon color='#f7b125' icon={faSurprise} />
-							</li>
-							<li>
-								<FontAwesomeIcon color='#e9710f' icon={faAngry} />
-							</li>
-						</ul>
+			</div>
+			{comment[0] && (
+				<>
+					<div className={styles.post__comment}>
+						<div className={styles.img__container__comments}>
+							<img src='IMG-20220126-WA0001.jpg' alt='' />
+						</div>
+						<div className={styles.text__area__container}>
+							<textarea
+								placeholder='Add a Comment'
+								value={post__text__comment.comment}
+								name='comment'
+								onChange={handleChange}
+								onKeyDown={handleKeyDownComments}></textarea>
+							<FontAwesomeIcon icon={faImage} />
+						</div>
+						{post__text__comment.comment.length > 3 && (
+							<button className={styles.button__blue}>Post</button>
+						)}
 					</div>
-				)}
-			</div>
-			<div className={styles.post__comment}>
-				<div className={styles.img__container__comments}>
-					<img src='IMG-20220126-WA0001.jpg' alt='' />
-				</div>
-				<div className={styles.text__area__container}>
-					<textarea
-						placeholder='Add a Comment'
-						value={post__text__comment}
-						onChange={(e) => setPost__text__comment(e.target.value)}
-						onKeyDown={handleKeyDownComments}></textarea>
-					<FontAwesomeIcon icon={faImage} />
-				</div>
-				{post__text__comment.length > 3 && <button className={styles.button__blue}>Post</button>}
-			</div>
-			<div className={styles.comments}></div>
+					<div className={styles.comments}>
+						<div className={styles.img__container__comments}>
+							<img src='IMG-20220126-WA0001.jpg' alt='' />
+						</div>
+						<div className={styles.comment__body}>
+							<div className={styles.user__comment}>
+								<h3>Okoye Chibuike Samuel</h3>
+								<p>18h</p>
+							</div>
+							<p className={styles.comment__proper}>
+								Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum doloremque quibusdam
+								magnam unde consectetur libero sunt est fugiat vel explicabo culpa, aut commodi tenetur,
+								suscipit eos expedita id ipsum recusandae Lorem ipsum dolor sit amet consectetur
+								adipisicing elit.
+							</p>
+						</div>
+						<div className={styles.comment__actions}>
+							<ul className={styles.actions__lists}>
+								<li onMouseLeave={() => rxnHidden(1)}>
+									<p onMouseEnter={() => rxnVisible(1)}>Like</p>{' '}
+									{showReactions[1] && (
+										<>
+											<div className={styles.reactions}>
+												<ul className={styles.sub__rxn}>
+													{emojis.map((emoji, index) => (
+														<li key={index}>{emoji.emoji__rxn}</li>
+													))}
+												</ul>
+											</div>
+										</>
+									)}
+								</li>
+								<li style={{ display: 'flex', gap: '3px' }}>
+									<span className={styles.rxns}>
+										{emojis.map((emoji) => (
+											<>{emoji.emoji__rxn}</>
+										))}
+									</span>
+									<p>20</p>
+								</li>
+								<li onClick={() => handleComment(1)}>
+									<p>Reply</p>
+								</li>
+								<li>
+									<p>10 replies</p>
+								</li>
+							</ul>
+						</div>
+						<div className={styles.replies}>
+							<div className={styles.img__container__comments}>
+								<img src='IMG-20220126-WA0001.jpg' alt='' />
+							</div>
+							<div className={styles.comment__body}>
+								<div className={styles.user__comment}>
+									<h3>Okoye Chibuike Samuel</h3>
+									<p>18h</p>
+								</div>
+								<p className={styles.comment__proper}>
+									Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum doloremque quibusdam
+									magnam unde consectetur libero sunt est fugiat vel explicabo culpa, aut commodi
+									tenetur, suscipit eos expedita id ipsum recusandae Lorem ipsum dolor sit amet
+									consectetur adipisicing elit.
+								</p>
+							</div>
+							<div className={styles.replies__actions}>
+								<ul className={styles.actions__lists}>
+									<li onMouseLeave={() => rxnHidden(2)}>
+										<p onMouseEnter={() => rxnVisible(2)}> Like</p>
+										{showReactions[2] && (
+											<div className={styles.reactions}>
+												<ul className={styles.sub__rxn}>
+													{emojis.map((emoji, index) => (
+														<li key={index}>{emoji.emoji__rxn}</li>
+													))}
+												</ul>
+											</div>
+										)}
+									</li>
+									<li style={{ display: 'flex', gap: '3px' }}>
+										<span className={styles.rxns}>
+											{emojis.map((emoji) => (
+												<>{emoji.emoji__rxn}</>
+											))}
+										</span>
+										<p>20</p>
+									</li>
+									<li onClick={() => handleComment(1)}>
+										<p>Reply</p>
+									</li>
+									<li>
+										<p>10 replies</p>
+									</li>
+								</ul>
+								{comment[1] && (
+									<div className={styles.post__comment}>
+										<div className={styles.img__container__comments}>
+											<img src='IMG-20220126-WA0001.jpg' alt='' />
+										</div>
+										<div className={styles.text__area__container}>
+											<textarea
+												placeholder='Add a reply'
+												value={post__text__comment.reply}
+												name='reply'
+												onChange={handleChange}
+												onKeyDown={handleKeyDownComments}></textarea>
+											<FontAwesomeIcon icon={faImage} />
+										</div>
+										{post__text__comment.reply.length > 3 && (
+											<button className={styles.button__blue}>Post</button>
+										)}
+									</div>
+								)}
+							</div>
+						</div>
+					</div>
+				</>
+			)}
 		</article>
 	)
 }

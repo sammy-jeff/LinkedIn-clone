@@ -10,36 +10,36 @@ function Nav() {
 			<img src='Linkedin_logo_PNG4.png' className={styles.logo} alt='' onClick={() => navigate('/')} />
 			<ul className={styles.topLinks}>
 				<li>
-					<a href=''>
+					<Link to='/discover'>
 						<FontAwesomeIcon icon={faCompass} />
 						<p>Discover</p>
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href=''>
+					<Link to='/people'>
 						<FontAwesomeIcon icon={faPeopleArrows} />
 						<p>People</p>
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href=''>
+					<Link to='/learning'>
 						<FontAwesomeIcon icon={faBook} />
 						<p>Learning</p>
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href=''>
+					<Link to='/jobs'>
 						<FontAwesomeIcon icon={faBriefcase} />
 						<p>Jobs</p>
-					</a>
+					</Link>
 				</li>
 			</ul>
 			<div className={styles.bottomLinks}>
-				<Link to='signUp' className={styles.join}>
-					<a href=''>Join now</a>
+				<Link to='/signUp' className={styles.join}>
+					Sign Up
 				</Link>
-				<Link to='signIn' className={styles.signInBtn}>
-					<a href=''>Sign in</a>
+				<Link to='/signIn' className={styles.signInBtn}>
+					Sign In
 				</Link>
 			</div>
 		</nav>

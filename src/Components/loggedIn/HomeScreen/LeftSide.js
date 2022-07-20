@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import styles from '../../../CSS/loggedInCss/leftSide.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark, faChevronDown, faChevronUp, faPlus, faSquare } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 function LeftSide() {
 	const [lessMore, setLessMore] = useState(false)
-
+	const { user, friendsList } = useSelector((state) => state.user.value)
 	const [width, setWidth] = useState(window.innerWidth)
 	const breakPoint = 768
 	useEffect(() => {
@@ -22,14 +24,14 @@ function LeftSide() {
 						<div className={styles.profilePic__container}>
 							<img src='user-avatar-svgrepo-com.svg' alt='' />
 						</div>
-						<p className={styles.name}>Okoye Chibuike Samuel</p>
+						<p className={styles.name}>{user?.name}</p>
 					</div>
 				</div>
 
 				<div className={width < breakPoint && lessMore ? styles.invisible : styles.visible}>
 					<div className={styles.grow__network}>
 						<p>Connection</p>
-						<p>68</p>
+						<p>{friendsList.length}</p>
 						<p>Grow your network</p>
 					</div>
 					<div className={styles.exclusives}>
@@ -59,7 +61,7 @@ function LeftSide() {
 				</p>
 				<p>Followed Hashtags</p>
 				<div className={styles.discover}>
-					<a>Discover more</a>
+					<Link to='#'>Discover more</Link>
 				</div>
 			</div>
 
@@ -67,12 +69,12 @@ function LeftSide() {
 				<div className={styles.hide} onClick={() => setLessMore(!lessMore)}>
 					{lessMore ? (
 						<>
-							<a>Show More</a>
+							<button>Show More</button>
 							<FontAwesomeIcon icon={faChevronDown} />
 						</>
 					) : (
 						<>
-							<a>Show Less</a>
+							<button>Show Less</button>
 							<FontAwesomeIcon icon={faChevronUp} />
 						</>
 					)}

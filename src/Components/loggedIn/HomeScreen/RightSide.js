@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../../../CSS/loggedInCss/rightSide.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faInfo, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 function RightSide() {
 	const date = new Date().getFullYear()
 	return (
@@ -64,31 +65,31 @@ function RightSide() {
 			<footer className={styles.footer}>
 				<ul className={styles.footer__list}>
 					<li>
-						<a>About</a>
+						<Link to='#'>About</Link>
 					</li>
 					<li>
-						<a>Accessbility</a>
+						<Link to='#'>Accessbility</Link>
 					</li>
 					<li>
-						<a>Help Center</a>
+						<Link to='#'>Help Center</Link>
 					</li>
 					<li>
-						<a>Privacy & Terms</a>
+						<Link to='#'>Privacy & Terms</Link>
 					</li>
 					<li>
-						<a>Ad Choices</a>
+						<Link to='#'>Ad Choices</Link>
 					</li>
 					<li>
-						<a>Advertising</a>
+						<Link to='#'>Advertising</Link>
 					</li>
 					<li>
-						<a>Business Services</a>
+						<Link to='#'>Business Services</Link>
 					</li>
 					<li>
-						<a>Get the LinkedIn app</a>
+						<Link to='#'>Get the LinkedIn app</Link>
 					</li>
 					<li>
-						<a>More</a>
+						<Link to='#'>More</Link>
 					</li>
 				</ul>
 				<div className={styles.copyright}>

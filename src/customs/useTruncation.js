@@ -9,7 +9,7 @@ function useTruncation() {
 			return (
 				<>
 					{string.slice(0, n)}
-					<h5
+					<span
 						onClick={() => setisClicked(true)}
 						style={{
 							textDecoration: 'underline',
@@ -18,7 +18,7 @@ function useTruncation() {
 							marginLeft: 5,
 						}}>
 						...See more
-					</h5>
+					</span>
 				</>
 			)
 		}

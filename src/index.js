@@ -2,13 +2,26 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
+import { BrowserRouter as Router } from 'react-router-dom'
+import { configureStore } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux'
+import postReducer from './features/createPost'
+import userAuthReducer from './features/userAuth'
+import userReducer from './features/userSlice'
+const store = configureStore({
+	reducer: {
+		postModal: postReducer,
+		userAuth: userAuthReducer,
+		user: userReducer,
+	},
+})
 ReactDOM.render(
 	<React.StrictMode>
-		<Router>
-			<App />
-		</Router>
+		<Provider store={store}>
+			<Router>
+				<App />
+			</Router>
+		</Provider>
 	</React.StrictMode>,
 
 	document.getElementById('root')

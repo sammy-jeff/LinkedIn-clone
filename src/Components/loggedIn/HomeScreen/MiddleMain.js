@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faImage, faPaperPlane, faShare, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import useEmoji from '../../../customs/useEmojis'
 import useTruncation from '../../../customs/useTruncation'
+import { useSelector } from 'react-redux'
 
 function MiddleMain() {
 	const [comment, setComment] = useState({ 0: false, 1: false })
 	const [showReactions, setShowReactions] = useState({ 0: false, 1: false, 2: false })
+	const { user } = useSelector((state) => state.user.value)
 	const handleComment = (id) => {
 		const val = true
 		setComment({ ...comment, [id]: val })
@@ -45,7 +47,7 @@ function MiddleMain() {
 					{' '}
 					<img src='IMG-20220126-WA0001.jpg' alt='profile__pics' />
 				</div>
-				<p>Okoye Chibuike Samuel</p>
+				<p>{user?.name}</p>
 			</div>
 			<div className={styles.post__msg}>
 				<p>
@@ -116,7 +118,7 @@ function MiddleMain() {
 						</div>
 						<div className={styles.comment__body}>
 							<div className={styles.user__comment}>
-								<h3>Okoye Chibuike Samuel</h3>
+								<h3>{user?.name}</h3>
 								<p>18h</p>
 							</div>
 							<p className={styles.comment__proper}>
@@ -164,7 +166,7 @@ function MiddleMain() {
 							</div>
 							<div className={styles.comment__body}>
 								<div className={styles.user__comment}>
-									<h3>Okoye Chibuike Samuel</h3>
+									<h3>{user?.name}</h3>
 									<p>18h</p>
 								</div>
 								<p className={styles.comment__proper}>

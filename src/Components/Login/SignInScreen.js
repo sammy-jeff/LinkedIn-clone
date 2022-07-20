@@ -2,12 +2,16 @@ import React, { useState } from 'react'
 import styles from '../../CSS/loginCss/signInScreen.module.css'
 import { Link } from 'react-router-dom'
 import Footer from './Footer'
+import useSignIn from '../../customs/useSignIn'
+import { useSelector } from 'react-redux'
 function SignInScreen({ showPassword, setShowPassword }) {
 	const initialValues = {
 		email: '',
 		password: '',
 	}
 	const [values, setValues] = useState(initialValues)
+	const handleSignIn = useSignIn()
+	const { isLoading } = useSelector((state) => state.user.value)
 	const handleChanges = (e) => {
 		let { name, value } = e.target
 		setValues({ ...values, [name]: value })
@@ -31,7 +35,7 @@ function SignInScreen({ showPassword, setShowPassword }) {
 				</svg>
 			</header>
 			<section className={styles.section}>
-				<form className={styles.form}>
+				<form className={styles.form} onSubmit={(e) => handleSignIn(e, values.email, values.password)}>
 					<h1>Sign in</h1>
 					<p>Stay updated on your professional world</p>
 					<div className={styles.forEmail}>
@@ -62,7 +66,12 @@ function SignInScreen({ showPassword, setShowPassword }) {
 						<span onClick={() => setShowPassword(!showPassword)}>{showPassword ? 'Hide' : 'Show'}</span>
 					</div>
 					<p className={styles.forgot}>Forgot password?</p>
-					<button id={styles.signInBtn}>Sign in</button>
+					<button
+						type='submit'
+						id={styles.signInBtn}
+						onSubmit={(e) => handleSignIn(e, values.email, values.password)}>
+						{isLoading ? `Signing In user` : `Sign in`}
+					</button>
 					<span className={styles.or}>
 						<p>or</p>
 					</span>

@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styles from '../../../CSS/loggedInCss/createPost.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFile, faImage, faPlay, faTimes } from '@fortawesome/free-solid-svg-icons'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { showPost } from '../../../features/createPost'
 function CreatePost() {
 	const dispatch = useDispatch()
+	const { user } = useSelector((state) => state.user.value)
 	const handleKeyDown = (e) => {
 		e.target.style.height = 'inherit'
 		e.target.style.height = `${e.target.scrollHeight}px`
@@ -27,7 +28,7 @@ function CreatePost() {
 						{' '}
 						<img src='IMG-20220126-WA0001.jpg' alt='profile__pics' />
 					</div>
-					<p>Okoye Chibuike Samuel</p>
+					<p>{user?.name}</p>
 				</div>
 				<div className={styles.post__text}>
 					<textarea

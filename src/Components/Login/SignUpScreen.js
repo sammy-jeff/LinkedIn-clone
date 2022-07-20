@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import styles from '../../CSS/loginCss/signUpScreen.module.css'
 import { Link } from 'react-router-dom'
 import Footer from './Footer'
+import useSignUp from '../../customs/useSignUp'
+import { useSelector } from 'react-redux'
 function SignUpScreen({ showPassword, setShowPassword }) {
 	let initialState = {
+		username: '',
 		email: '',
 		password: '',
 	}
+	const { isLoading } = useSelector((state) => state.user.value)
 	const [text, setText] = useState(initialState)
 	const [testRegex, setTestRegex] = useState({ email: false, password: false })
 	const [val1, setVal1] = useState(false)
@@ -15,6 +19,7 @@ function SignUpScreen({ showPassword, setShowPassword }) {
 		const { name, value } = e.target
 		setText({ ...text, [name]: value })
 	}
+	//Start validating Email
 	const regexes = {
 		email: /^([a-z0-9\.-]+)@([a-z|\d]+)\.([a-z]{3,8})(\.[a-z]{2,8})?$|(^[\d]{11,11}$)/,
 		password: /^[A-Za-z0-9]{8,}$/,
@@ -40,6 +45,10 @@ function SignUpScreen({ showPassword, setShowPassword }) {
 			setTestRegex({ ...testRegex, [name]: false })
 		}
 	}
+	// End Validating user
+	// Start Authenticating User
+	const handleSignUp = useSignUp()
+	// End Authenticating User
 	return (
 		<div className={styles.signUpScreen}>
 			<header>
@@ -58,7 +67,18 @@ function SignUpScreen({ showPassword, setShowPassword }) {
 				</svg>
 			</header>
 			<h1>Make the most of your professional life</h1>
-			<form className={styles.form}>
+			<form className={styles.form} onSubmit={(e) => handleSignUp(e, text.username, text.email, text.password)}>
+				<div className={styles.email__phone}>
+					<label>Name</label>
+					<input
+						type='text'
+						name='username'
+						// className={val1 ? styles.invalid__input : testRegex.email ? styles.invalid__input : ''}
+						value={text.username}
+						onChange={handleChange}
+					/>
+				</div>
+
 				<div className={styles.email__phone}>
 					<label>Email or Phone Number</label>
 					<input
@@ -103,7 +123,12 @@ function SignUpScreen({ showPassword, setShowPassword }) {
 					By clicking Agree & Join, you agree to the LinkedIn <span>User Agreement, Privacy Policy</span>, and{' '}
 					<span>Cookie Policy</span>
 				</p>
-				<button className={styles.signUpBtn}>Agree & Join</button>
+				<button
+					type='submit'
+					className={styles.signUpBtn}
+					onSubmit={(e) => handleSignUp(e, text.username, text.email, text.password)}>
+					{isLoading ? `Creating...` : `			Agree & Join`}
+				</button>
 			</form>
 			<p className={styles.signIn}>
 				Already on LinkedIn? <Link to='/signIn'>Sign in</Link>

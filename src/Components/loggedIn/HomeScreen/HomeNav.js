@@ -6,21 +6,24 @@ import {
 	faCaretDown,
 	faCommentDots,
 	faEllipsisH,
-	faExternalLinkSquareAlt,
 	faHome,
-	faHSquare,
 	faPeopleArrows,
-	faPhoneSquareAlt,
-	faRssSquare,
 	faSquareFull,
-	faSquareRootAlt,
-	faVectorSquare,
-	faWaveSquare,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { signOut } from 'firebase/auth'
+import { auth, db } from '../../../firebase'
+import { doc, updateDoc } from 'firebase/firestore'
+import { NavLink } from 'react-router-dom'
 function HomeNav() {
 	const [showwork, setShowWork] = useState(false)
 	const [showLogOut, setShowLogOut] = useState(false)
+	const handleSignOut = async () => {
+		await updateDoc(doc(db, 'users', auth.currentUser.uid), {
+			isOnline: false,
+		})
+		await signOut(auth)
+	}
 	return (
 		<nav className={styles.nav}>
 			<header className={styles.header}>
@@ -29,7 +32,7 @@ function HomeNav() {
 					width='34'
 					height='34'
 					viewBox='0 0 34 34'
-					class='global-nav__logo'>
+					className='global-nav__logo'>
 					<title>LinkedIn</title>
 
 					<g>
@@ -40,25 +43,48 @@ function HomeNav() {
 				</svg>
 			</header>
 			<ul className={styles.lists}>
+				{' '}
 				<li className={styles.icons__container}>
-					<FontAwesomeIcon icon={faHome} />
-					<span className={styles.icon__titles}>Home</span>
+					<NavLink
+						to='/home'
+						className={({ isActive }) => (isActive ? styles.active__link : styles.icons__container)}>
+						<FontAwesomeIcon icon={faHome} />
+						<span className={styles.icon__titles}>Home</span>
+					</NavLink>
 				</li>
 				<li className={styles.icons__container}>
-					<FontAwesomeIcon icon={faPeopleArrows} />
-					<span className={styles.icon__titles}>My Network</span>
+					<NavLink
+						to='/networks'
+						className={({ isActive }) => (isActive ? styles.active__link : styles.icons__container)}>
+						{' '}
+						<FontAwesomeIcon icon={faPeopleArrows} />
+						<span className={styles.icon__titles}>My Network</span>
+					</NavLink>
+				</li>{' '}
+				<li className={styles.icons__container}>
+					<NavLink
+						to='/jobs'
+						className={({ isActive }) => (isActive ? styles.active__link : styles.icons__container)}>
+						{' '}
+						<FontAwesomeIcon icon={faBriefcase} />
+						<span className={styles.icon__titles}>Jobs</span>
+					</NavLink>
 				</li>
 				<li className={styles.icons__container}>
-					<FontAwesomeIcon icon={faBriefcase} />
-					<span className={styles.icon__titles}>Jobs</span>
+					<NavLink
+						to='/messaging'
+						className={({ isActive }) => (isActive ? styles.active__link : styles.icons__container)}>
+						<FontAwesomeIcon icon={faCommentDots} />
+						<span className={styles.icon__titles}>Messaging</span>
+					</NavLink>
 				</li>
 				<li className={styles.icons__container}>
-					<FontAwesomeIcon icon={faCommentDots} />
-					<span className={styles.icon__titles}>Messaging</span>
-				</li>
-				<li className={styles.icons__container}>
-					<FontAwesomeIcon icon={faBell} />
-					<span className={styles.icon__titles}>Notifications</span>
+					<NavLink
+						to='/notifications'
+						className={({ isActive }) => (isActive ? styles.active__link : styles.icons__container)}>
+						<FontAwesomeIcon icon={faBell} />
+						<span className={styles.icon__titles}>Notifications</span>
+					</NavLink>
 				</li>
 				<li
 					className={styles.icons__container}
@@ -76,7 +102,7 @@ function HomeNav() {
 						</span>
 					</span>
 					{showLogOut && (
-						<div className={styles.logOut}>
+						<div className={styles.logOut} onClick={handleSignOut}>
 							<p>Sign Out</p>
 						</div>
 					)}

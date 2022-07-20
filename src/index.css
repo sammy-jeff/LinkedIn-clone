@@ -12,6 +12,7 @@ html,
 body {
 	box-sizing: border-box;
 	background-color: #fff;
+	height: 100%;
 }
 
 div,

@@ -36,7 +36,7 @@ function MiddleMain() {
 			<div className={styles.top}>
 				<div className={styles.img__container__mini}>
 					{' '}
-					<img src='IMG-20220126-WA0001.jpg' alt='profile__pics' />
+					<img src={user?.avatar || `user-avatar-svgrepo-com.svg`} alt='profile__pics' />
 				</div>
 				<p>
 					<span>Sammy</span> likes this
@@ -45,7 +45,7 @@ function MiddleMain() {
 			<div className={styles.user}>
 				<div className={styles.img__container}>
 					{' '}
-					<img src='IMG-20220126-WA0001.jpg' alt='profile__pics' />
+					<img src={user?.avatar || `user-avatar-svgrepo-com.svg`} alt='profile__pics' />
 				</div>
 				<p>{user?.name}</p>
 			</div>
@@ -72,7 +72,7 @@ function MiddleMain() {
 								<div className={styles.reactions}>
 									<ul className={styles.sub__rxn}>
 										{emojis.map((emoji, index) => (
-											<li key={index}>{emoji.emoji__rxn}</li>
+											<li key={emoji.id}>{emoji.emoji__rxn}</li>
 										))}
 									</ul>
 								</div>
@@ -97,7 +97,7 @@ function MiddleMain() {
 				<>
 					<div className={styles.post__comment}>
 						<div className={styles.img__container__comments}>
-							<img src='IMG-20220126-WA0001.jpg' alt='' />
+							<img src={user?.avatar || `user-avatar-svgrepo-com.svg`} alt='' />
 						</div>
 						<div className={styles.text__area__container}>
 							<textarea
@@ -114,7 +114,7 @@ function MiddleMain() {
 					</div>
 					<div className={styles.comments}>
 						<div className={styles.img__container__comments}>
-							<img src='IMG-20220126-WA0001.jpg' alt='' />
+							<img src={user?.avatar || `user-avatar-svgrepo-com.svg`} alt='' />
 						</div>
 						<div className={styles.comment__body}>
 							<div className={styles.user__comment}>
@@ -136,8 +136,8 @@ function MiddleMain() {
 										<>
 											<div className={styles.reactions}>
 												<ul className={styles.sub__rxn}>
-													{emojis.map((emoji, index) => (
-														<li key={index}>{emoji.emoji__rxn}</li>
+													{emojis.map((emoji) => (
+														<li key={emoji.id}>{emoji.emoji__rxn}</li>
 													))}
 												</ul>
 											</div>
@@ -147,7 +147,7 @@ function MiddleMain() {
 								<li style={{ display: 'flex', gap: '3px' }}>
 									<span className={styles.rxns}>
 										{emojis.map((emoji) => (
-											<>{emoji.emoji__rxn}</>
+											<span key={emoji.id}>{emoji.emoji__rxn}</span>
 										))}
 									</span>
 									<p>20</p>
@@ -162,7 +162,7 @@ function MiddleMain() {
 						</div>
 						<div className={styles.replies}>
 							<div className={styles.img__container__comments}>
-								<img src='IMG-20220126-WA0001.jpg' alt='' />
+								<img src={user?.avatar || `user-avatar-svgrepo-com.svg`} alt='' />
 							</div>
 							<div className={styles.comment__body}>
 								<div className={styles.user__comment}>
@@ -183,8 +183,8 @@ function MiddleMain() {
 										{showReactions[2] && (
 											<div className={styles.reactions}>
 												<ul className={styles.sub__rxn}>
-													{emojis.map((emoji, index) => (
-														<li key={index}>{emoji.emoji__rxn}</li>
+													{emojis.map((emoji) => (
+														<li key={emoji.id}>{emoji.emoji__rxn}</li>
 													))}
 												</ul>
 											</div>
@@ -193,7 +193,7 @@ function MiddleMain() {
 									<li style={{ display: 'flex', gap: '3px' }}>
 										<span className={styles.rxns}>
 											{emojis.map((emoji) => (
-												<>{emoji.emoji__rxn}</>
+												<span key={emoji.id}>{emoji.emoji__rxn}</span>
 											))}
 										</span>
 										<p>20</p>
@@ -208,7 +208,7 @@ function MiddleMain() {
 								{comment[1] && (
 									<div className={styles.post__comment}>
 										<div className={styles.img__container__comments}>
-											<img src='IMG-20220126-WA0001.jpg' alt='' />
+											<img src={user?.avatar || `user-avatar-svgrepo-com.svg`} alt='' />
 										</div>
 										<div className={styles.text__area__container}>
 											<textarea

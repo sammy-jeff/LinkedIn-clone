@@ -26,7 +26,7 @@ function CreatePost() {
 				<div className={styles.user}>
 					<div className={styles.img__container}>
 						{' '}
-						<img src='IMG-20220126-WA0001.jpg' alt='profile__pics' />
+						<img src={user?.avatar || `user-avatar-svgrepo-com.svg`} alt='profile__pics' />
 					</div>
 					<p>{user?.name}</p>
 				</div>

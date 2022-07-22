@@ -14,9 +14,11 @@
 .user {
 	display: flex;
 	flex-direction: column;
-	gap: 25px;
+	gap: 10px;
 	border-bottom: 1px solid #70707099;
 	position: relative;
+	align-items: center;
+	text-align: center;
 }
 .back__img {
 	width: 100%;
@@ -25,30 +27,39 @@
 }
 .profile__container {
 	width: 100%;
-	padding: 1rem 0;
+	/* padding: 1rem 0; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 15px;
+	text-align: center;
 }
 
 .profilePic__container {
-	max-width: 13%;
-	max-height: 4.4rem;
-	background-color: lightgray;
-	border-radius: 50%;
-	position: absolute;
-	top: 17%;
-	/* position: absolute;
-	top: 3%; */
-	/* margin-top: -15%; */
+	position: relative;
 }
 
 .profilePic__container img {
-	width: 100%;
-	height: 100%;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	object-fit: contain;
+}
+.overlay {
+	opacity: 0;
 	display: flex;
-	justify-content: center;
+	position: absolute;
+	top: 45%;
+	/* bottom: 50%; */
+	transform: translateX(50%);
+	gap: 5px;
+	transition: all ease-in-out 250ms;
+}
+.profilePic__container:hover img {
+	opacity: 0.3;
+}
+.profilePic__container:hover .overlay {
+	opacity: 1;
 }
 
 .name {

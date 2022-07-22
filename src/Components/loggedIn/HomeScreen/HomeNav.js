@@ -15,9 +15,11 @@ import { signOut } from 'firebase/auth'
 import { auth, db } from '../../../firebase'
 import { doc, updateDoc } from 'firebase/firestore'
 import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 function HomeNav() {
 	const [showwork, setShowWork] = useState(false)
 	const [showLogOut, setShowLogOut] = useState(false)
+	const { user } = useSelector((state) => state.user.value)
 	const handleSignOut = async () => {
 		await updateDoc(doc(db, 'users', auth.currentUser.uid), {
 			isOnline: false,
@@ -93,7 +95,7 @@ function HomeNav() {
 						setShowWork(false)
 					}}>
 					<div className={styles.me}>
-						<img src='user-avatar-svgrepo-com.svg' alt='' />
+						<img src={user?.avatar || `user-avatar-svgrepo-com.svg`} alt='' />
 					</div>
 					<span className={styles.icon__titles}>
 						me{' '}

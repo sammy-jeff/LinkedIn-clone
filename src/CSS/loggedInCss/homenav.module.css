@@ -127,8 +127,8 @@
 		border: black solid 2px;
 		width: 80%;
 		margin-bottom: -0.3rem;
-		transition: all 350ms ease-in-out;
-		animation: active_animation ease-in-out 350ms;
+		transition: all 250ms ease-in-out;
+		animation: active_animation ease-in-out 250ms;
 	}
 	.me {
 		max-width: 18%;

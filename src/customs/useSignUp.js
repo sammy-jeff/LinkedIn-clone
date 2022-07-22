@@ -19,6 +19,8 @@ function useSignUp() {
 				id: createUser.user.uid,
 				createdAt: Timestamp.fromDate(new Date()),
 				isOnline: true,
+				avatar: '',
+				avatarPath: '',
 			})
 			dispatch(setLoading(false))
 		} catch (error) {
